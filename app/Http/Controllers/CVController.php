@@ -60,6 +60,9 @@ class CVController extends Controller
             // Upload Image
             $path = $request->file('file')->storeAs('public/file', $fileNameToStore);
         }
+        else {
+            $fileNameToStore = $request->input('file');
+        }
 
         $cv = CV::create([
             'age' => $request->input('age'),
@@ -97,7 +100,7 @@ class CVController extends Controller
         $age = $request->input('age');
         $residence = $request->input('residence');
         $experience = $request->input('experience');
-        
+
         $cv = CV::where('age', '<=', '%'.$age.'%')
         ->orWhere('residence', 'ilike', '%'.$residence.'%')
         ->orWhere('experience', '>=', '%'.$experience.'%')
