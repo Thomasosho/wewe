@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CV;
+use App\Http\Controllers\CVController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,8 +23,8 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 
-    Route::get('/cvs', [CV::class, 'index']);
-    Route::post('/cv', [CV::class, 'store']);
-    Route::get('/cv/{id}', [CV::class, 'show']);
-    Route::post('/cv-search', [CV::class, 'search']);
+    Route::get('/cvs', [CVController::class, 'index']);
+    Route::post('/cv', [CVController::class, 'store']);
+    Route::get('/cv/{id}', [CVController::class, 'show']);
+    Route::post('/cv-search', [CVController::class, 'search']);
 });
